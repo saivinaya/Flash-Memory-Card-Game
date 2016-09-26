@@ -11,41 +11,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * This class has 3 methods, InitializeCards() is used to initialize the deck with the set of cards that are available
+ * This class is used to play the game and has 3 methods, printArray() used to print the 2D array as the game is played,
  * ShowCards() which takes the initialized 2D Array and is used to play the interactive game and 
- * addElement() takes the x & y position and the 2D array and 
+ * addElement() takes the x and y position and the 2D array and 
  * is used to add the position of cards that have already been matched so as to not let the user enter the same positions again and again.
  * @author VinayaSaiD
  */
 public class MemoryGame {
-    // given set of cards that needs to be suffled 
-    private String[] cards = {"A", "A", "Q", "Q", "K", "K", "J", "J", "2", "2", "5", "5", "6", "6", "9", "9"};
-    
-    public String[][] initializeCards(){
-        String[][] cardsInitialize = new String[4][4];
-        Random rand = new Random();
-        ArrayList<String> finishedIndices = new ArrayList<String>();
-        finishedIndices.add(Integer.toString(16));
-        int randomIndex;
-        // generate the matrix from the given cards using 2 for loops
-        for(int i=0;i<4;i++) {
-                for(int j=0;j<4;j++) {
-                    // generating the random number between 0 and 15 to select cards from the deck
-                    do{
-                    randomIndex = rand.nextInt((15 - 0) + 1) + 0;
-                    }
-                    // repeat generating variable if that position is already used in building the puzzle
-                    while(finishedIndices.contains(Integer.toString(randomIndex)));
-                    // adding cards to the puzzle
-                    cardsInitialize[i][j] = cards[randomIndex];
-                    // maintaning the indicies which are alreay used and added to puzzle
-                    finishedIndices.add(Integer.toString(randomIndex));
-                }
-        }
-        // This is to print the initialized puzzle, you can use this for your testing purpose
-        //printArray(cardsInitialize);
-        return cardsInitialize;
-    }
     
     // This is to print any 2D array String array
     public void printArray(String[][] arrayToPrint){
